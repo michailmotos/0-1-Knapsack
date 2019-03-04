@@ -1,5 +1,5 @@
 import pyximport; pyximport.install()
-import final
+import knapsack
 import numpy as np
 import math
 import random
@@ -58,6 +58,6 @@ utilDist = zipfDist(distSize,0.2)
 #weightDist = [3.5,2.5,3.5,1.5]
 #utilDist = [100,20,60,40]
 dynamicStart = time.time()
-a = final.solve_cython(cacheSize,distSize,expandArray(weightDist),expandArray(utilDist))
+a = knapsack.solve_cython(cacheSize,distSize,expandArray(weightDist),expandArray(utilDist))
 finish = time.time() - dynamicStart
 print(a,finish)
