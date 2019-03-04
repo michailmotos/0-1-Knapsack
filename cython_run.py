@@ -58,6 +58,6 @@ utilDist = zipfDist(distSize,0.2)
 #weightDist = [3.5,2.5,3.5,1.5]
 #utilDist = [100,20,60,40]
 dynamicStart = time.time()
-a = knapsack.solve_cython(cacheSize,distSize,expandArray(weightDist),expandArray(utilDist))
+cacheHitRatio = knapsack.solve_cython(cacheSize,distSize,expandArray(weightDist),expandArray(utilDist))
 finish = time.time() - dynamicStart
-print(a,finish)
+print(cacheHitRatio,finish)
