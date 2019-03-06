@@ -1,5 +1,5 @@
 import pyximport; pyximport.install()
-import knapsack
+import final
 import numpy as np
 import math
 import random
@@ -7,14 +7,11 @@ from math import e
 import os
 import time
 
-#W,distSIze
-distSize = 1000
-cacheSize = 1440
+#distSize = # of elements
+#cacheSize = max Knapsack weight
+distSize = 4
+cacheSize = 5
 
-#weight = [3.5,2.5,3.5,1.5]
-#val = [100,20,60,40]
-#weight = np.array(weight)
-#val = np.array(val)
 
 def geometricDist(distSize,p):
 	geo_dist = [0 for i in range(distSize)]
@@ -51,13 +48,18 @@ def expandArray(array):
     return temp
 
 
-weightDist = paretoDist(distSize,1.16)
+
+weightDist = geometricDist(distSize,0.5)
+#print(weightDist)
 #print(weightDist)
 utilDist = zipfDist(distSize,0.2)
+
 #print(utilDist)
-#weightDist = [3.5,2.5,3.5,1.5]
+#weightDist = [3,2,4,1]
 #utilDist = [100,20,60,40]
+#weightDist = np.array(weightDist,dtype = int)
+#utilDist = np.array(utilDist,dtype = int)
 dynamicStart = time.time()
-cacheHitRatio = knapsack.solve_cython(cacheSize,distSize,expandArray(weightDist),expandArray(utilDist))
+a = final.solve_cython(cacheSize,distSize,expandArray(weightDist),expandArray(utilDist))
 finish = time.time() - dynamicStart
-print(cacheHitRatio,finish)
+print(a,finish)
