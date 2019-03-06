@@ -33,15 +33,17 @@ def zipfDist(distSize,s):
     #print(zipf_probability)
     return zipf_probability
 
-def paretoDist(distSize,b):
-    uniform = np.random.uniform(0, 1, distSize)
-    #cdf = [0 for i in range(distSize)]
-    cdf = np.empty(distSize,dtype=float)
-    #cdf = np.array(cdf).astype(float)
-    for i in range(distSize):
-        cdf[i] = 1/pow(e,np.log(uniform[i])/b)
 
-    return cdf
+def paretoDist(distSize,b):
+	'''
+	Constructs a Pareto Distribution
+	'''
+	uniform = np.random.uniform(0, 1, distSize)
+	cdf = np.empty(distSize,dtype=float)
+	cdf = 1/pow(e,np.log(uniform)/b)
+	return cdf
+
+
 
 def expandArray(array):
     temp = np.concatenate(([0], array))
