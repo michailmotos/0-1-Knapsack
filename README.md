@@ -6,9 +6,15 @@ Project is in its early stages atm.
 ### Prerequisites
 
 Libraries required are:
-'''
+```
 Cython
 Numpy
-'''
+```
+### Build Instructions:
+To build use the following command:
 
+```
+python setup.py build_ext --inplace 
+```
+using the setup.py I have uploaded.
 
