@@ -15,8 +15,8 @@ ctypedef np.float_t DTYPE_t
 
 
 #Uncommenting these improves performance but turns off important things such as bounds checking and negative index wrapping
-#@cython.boundscheck(False) # turn off bounds-checking for entire function
-#@cython.wraparound(False)  # turn off negative index wrapping for entire function
+#@cython.boundscheck(False) # turn off bounds-checking
+#@cython.wraparound(False)  # turn off negative index wrapping 
 def solve_cython(int distSize,int itemSize,np.ndarray[DTYPE_t, ndim=1] weightDist,np.ndarray[DTYPE_t, ndim=1] utilityDist):
     assert weightDist.dtype == DTYPE and utilityDist.dtype == DTYPE
     cdef np.ndarray[DTYPE_t, ndim=2] result = np.zeros([itemSize+1, distSize+1], dtype=DTYPE)
